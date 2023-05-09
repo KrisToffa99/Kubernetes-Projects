@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontpage-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontpage
+  template:
+    metadata:
+      name: frontpage-pod
+      labels:
+        app: frontpage
+    spec:
+      containers:
+        - name: frontpage-container
+          image: kriztoffa/frontpage
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+
